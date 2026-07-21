@@ -23,10 +23,16 @@ total.columns = ["지역", "총발생건수"]
 st.write(total["총발생건수"].describe())
 
 fig1 = px.histogram(total, x="총발생건수", title="총발생건수 히스토그램")
+
+# 평균선(빨강)과 중앙값선(파랑)을 그어서 둘이 벌어진 걸 눈으로 보이게
+fig1.add_vline(x=total["총발생건수"].mean(), line_color="red", line_dash="dash", annotation_text="평균 6,409건")
+fig1.add_vline(x=total["총발생건수"].median(), line_color="blue", line_dash="dash", annotation_text="중앙값 3,715건")
 st.plotly_chart(fig1)
+st.caption("막대가 왼쪽에 몰려 있고 오른쪽 꼬리가 깁니다. 평균(빨강)이 중앙값(파랑)보다 오른쪽에 있죠? 범죄가 많은 대도시 몇 곳이 평균을 끌어올린 것입니다.")
 
 fig2 = px.box(total, y="총발생건수", title="총발생건수 상자그림")
 st.plotly_chart(fig2)
+st.caption("상자 = 가운데 절반의 지역들이 있는 구간(1,110건~9,489건). 상자 위로 튀어나온 점 = 범죄가 유난히 많은 대도시(이상치). 이 점들이 평균을 끌어올린 범인입니다.")
 
 
 st.header("지역별 대시보드")
