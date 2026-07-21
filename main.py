@@ -11,7 +11,7 @@ st.set_page_config(page_title="지역별 범죄 발생건수", page_icon="🚨")
 
 # 데이터 불러오기 (cp949 인코딩)
 CSV_PATH = os.path.join(os.path.dirname(__file__), "crime_by_region.csv")
-df = pd.read_csv(CSV_PATH, encoding="cp949")
+df = pd.read_csv(CSV_PATH, encoding="utf-8")
 
 st.title("🚨 지역별 범죄 발생건수")
 
